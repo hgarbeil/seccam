@@ -66,6 +66,12 @@ function loadImages(datadir){
         
         galleryEl.appendChild(imgEl);
         imgEl.addEventListener("click",()=>{
+          const imgAll = document.querySelectorAll(".thumbnail") ;
+          imgAll.forEach (img0=>{
+            img0.classList.remove("selected") ;
+
+          }) ;
+          imgEl.classList.add("selected");
           console.log(vidfile);
           fullimEl.src=fullim ;
           // videoEl.innerHTML="" ;
