@@ -4,9 +4,19 @@ const fullimEl = document.querySelector(".fullim");
 const videoEl = document.querySelector(".video");
 const flatpickrEl = document.querySelector(".flatpickr") ;
 const loadButtonEl = document.querySelector(".load-button");
+const fileEl = document.querySelector(".file-string");
+
 var myvids =[] ;
 var mydirs =[] ;
 
+
+setTimeout(function(){
+  let date = new Date() ;
+  var dateout = date.toLocaleDateString() ;
+  var timeout = date.toLocaleTimeString() ;
+  document.querySelector(".date-string").textContent=dateout+'  '+timeout ;
+
+},10000) ;
 
 
 flatpickr(document.getElementById("date-input"), {
@@ -72,6 +82,7 @@ function loadImages(datadir){
 
           }) ;
           imgEl.classList.add("selected");
+          fileEl.innerText = `Filename : ${imfile}` ;
           console.log(vidfile);
           fullimEl.src=fullim ;
           // videoEl.innerHTML="" ;
