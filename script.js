@@ -46,9 +46,11 @@ function loadImages(datadir){
   galleryEl.textContent="" ;
   mydirs = getdatadirs (datadir);
   $ajaxUtils.sendGetRequest(mydirs[1]+'/files.txt',function(responseText){
+    responseText=responseText+"\naabc\n";
     var vidfiles = responseText.split("\n");
     vidfiles.forEach(vidfile=>{
       if (vidfile.length>5){
+        console.log(vidfile);
         myvids.push(vidfile);
       }
     });  
@@ -60,6 +62,7 @@ function loadImages(datadir){
 
   $ajaxUtils.sendGetRequest(mydirs[0]+'/files.txt',function(responseText){
     console.log(responseText) ;
+    responseText=responseText+"\naabc\n";
     var imfiles = responseText.split("\n") ;
     let count=0 ;
     imfiles.forEach(imfile=>{
@@ -68,6 +71,7 @@ function loadImages(datadir){
   	    if(imfile.length<5) {
 	    }
 	    else {
+        console.log(imfile);
         var fullim = mydirs[0]+'/'+imfile ;
         const imgEl = document.createElement("img") ;
         imgEl.classList.add ("thumbnail") ;
@@ -83,7 +87,7 @@ function loadImages(datadir){
           }) ;
           imgEl.classList.add("selected");
           fileEl.innerText = `Filename : ${imfile}` ;
-          console.log(vidfile);
+          console.log("Video file is "+vidfile);
           fullimEl.src=fullim ;
           // videoEl.innerHTML="" ;
           // videoEl.innerHTML = `<source src="${vidfile}" tyoe="video/mp4">`
